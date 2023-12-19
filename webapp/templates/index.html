@@ -5,7 +5,7 @@
     <div class='col-6'>
         {% include 'messages.html' %}
         {% for news in all_news %}
-            <p><a href="{{ news.url }}" style="color:black"><h5> {{ news.title }} </a></h5>
+            <p><a href="{{ url_for('news.single_news', news_id=news.id) }}" style="color:black"><h5> {{ news.title }} </a></h5>
                 <small>{{ news.date.strftime('%d %B %Y, %A') }}</small>
             </p>
             <hr style="color:black">

@@ -27,9 +27,11 @@ def get_news_ks():
             html_1 = get_html(url)
             if html_1:
                 soup_1 = BeautifulSoup(html_1, 'html.parser')
-                text = soup_1.find('div', class_='mainblock clearfix')
+                text = soup_1.find('div', class_='mainblock clearfix').decode_contents()
+                path = soup_1.find('div', class_='location').decode_contents()
+                text = text.replace(path, '')
             save_news(title, url, date, text)
-            
+
 
 
 def save_news(title, url, date, text):
