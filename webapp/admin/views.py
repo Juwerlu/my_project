@@ -10,5 +10,21 @@ blueprint = Blueprint('admin', __name__, url_prefix='/admin')
 @login_required
 def cabinet():
     if current_user.status == 'admin':
-        return 'Привет, админ!'
+        all_inf = User.query.all()
+        return render_template(
+            'cabinet.html',
+            all_inf=all_inf,
+            )
     return 'Ты не админ, свяжись с админом!'
+
+
+@blueprint.route('/cabinet')
+def changed_status():
+    
+    
+    
+@blueprint.route('/del/<int:id>')
+def delete_user(id):
+    User.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('user.cabinet'))

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <table cols="4">
+          <thead align="left">
+            <th width="200px"> ID </th> 
+            <th width="200px"> Логин </th>
+            <th width="200px"> Статус </th>
+          </thead>
+          {% for inf in all_inf %}
+            <tr> 
+              <td width="200px"> {{ inf.id }} </td> 
+              <td width="200px"> {{ inf.username }} </td> 
+              <td width="200px">{{ inf.status }}</td>
+              <td width="200px"> <a href="/del/{{ inf.id }}"><img width="20px" height="20px" src="/static/del.png"></a></td>
+            </tr>
+          {% endfor %}
+    </table>
+  </body>
+</html>
+{% endblock %}
